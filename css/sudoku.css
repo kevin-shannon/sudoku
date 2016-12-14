@@ -1,0 +1,30 @@
+@font-face { font-family: irohamaru-mikami-Regular; src: url('irohamaru-mikami-Regular.ttf'); }
+
+td {
+  border: 6px solid black;
+  text-align: center;
+  font-size: 350%;
+  font-family: irohamaru-mikami-Regular;
+}
+
+table {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+td {
+  width: 70px;
+  height: 70px;
+}
+
+h1 {
+  margin: 100px 0 0 0;
+  text-align: center;
+  font-size: 50px;
+  font-family: irohamaru-mikami-Regular;
+}
