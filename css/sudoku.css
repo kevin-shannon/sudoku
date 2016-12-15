@@ -1,10 +1,46 @@
 @font-face { font-family: irohamaru-mikami-Regular; src: url('irohamaru-mikami-Regular.ttf'); }
 
 td {
-  border: 6px solid black;
+  border: 2px solid black;
   text-align: center;
-  font-size: 350%;
+  font-size: 320%;
   font-family: irohamaru-mikami-Regular;
+}
+
+.tl {
+  border-top: 6px solid black;
+  border-left: 6px solid black;
+}
+
+.bl {
+  border-bottom: 6px solid black;
+  border-left: 6px solid black;
+}
+
+.tr {
+  border-top: 6px solid black;
+  border-right: 6px solid black;
+}
+
+.br {
+  border-bottom: 6px solid black;
+  border-right: 6px solid black;
+}
+
+.tt {
+  border-top: 6px solid black;
+}
+
+.ll {
+  border-left: 6px solid black;
+}
+
+.bb {
+  border-bottom: 6px solid black;
+}
+
+.rr {
+  border-right: 6px solid black;
 }
 
 table {

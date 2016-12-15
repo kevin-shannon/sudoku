@@ -29,11 +29,39 @@ function displayGrid(arrayToDisplay) {
   var table = "<table><tbody><tr>";
   for(var i = 0; i < 9; i++) {
     for(var j = 0; j < 9; j++) {
-      if(typeof arrayToDisplay[i][j] != 'undefined') {
-        table += "<td>" + arrayToDisplay[i][j] + "</td>";
+      var ident;
+      if(i % 3 == 0 && j % 3 == 0) {
+        ident = "tl";
+      }
+      else if(i == 8 && j % 3 == 0) {
+        ident = "bl";
+      }
+      else if(i % 3 == 0 && j == 8) {
+        ident = "tr";
+      }
+      else if(i == 8 && j == 8) {
+        ident = "br";
+      }
+      else if(i % 3 == 0) {
+        ident = "tt";
+      }
+      else if((i % 3 == 1 || i % 3 == 2) && j % 3 == 0) {
+        ident = "ll";
+      }
+      else if(i == 8) {
+        ident = "bb";
+      }
+      else if(j == 8) {
+        ident = "rr";
       }
       else {
-        table += "<td>" + "</td>";
+        ident = "ne"
+      }
+      if(typeof arrayToDisplay[i][j] != 'undefined') {
+        table += "<td class = " + ident + ">" + arrayToDisplay[i][j] + "</td>";
+      }
+      else {
+        table += "<td class = " + ident + ">" + "</td>";
       }
     }
     table += "</tr><tr>";
