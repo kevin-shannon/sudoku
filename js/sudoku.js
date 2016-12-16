@@ -61,11 +61,18 @@ function displayGrid(arrayToDisplay) {
         table += "<td class = " + ident + ">" + arrayToDisplay[i][j] + "</td>";
       }
       else {
-        table += "<td class = " + ident + "><input maxlength = 1, size='1', color: 'red'></td>";
+        table += "<td class = " + ident + "><input maxlength = 1, size='1', color: 'red', onkeypress='return isNumberKey(event)'></td>";
       }
     }
     table += "</tr><tr>";
   }
   table += "</tr></tbody></table>";
   document.write(table);
+}
+
+function isNumberKey(evt){
+    var charCode = (evt.which) ? evt.which : event.keyCode
+    if (charCode < 49 || charCode > 57)
+        return false;
+    return true;
 }
