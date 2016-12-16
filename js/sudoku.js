@@ -61,7 +61,7 @@ function displayGrid(arrayToDisplay) {
         table += "<td class = " + ident + ">" + arrayToDisplay[i][j] + "</td>";
       }
       else {
-        table += "<td class = " + ident + "><input maxlength = 1, size='1', color: 'red', onkeypress='return isNumberKey(event)'></td>";
+        table += "<td class = " + ident + "><input maxlength = 1, size='1', onkeypress='return isNumberKey(event)'></td>";
       }
     }
     table += "</tr><tr>";

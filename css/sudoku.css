@@ -1,17 +1,18 @@
 @font-face { font-family: irohamaru-mikami-Regular; src: url('irohamaru-mikami-Regular.ttf'); }
 
 td {
-  border: 2px solid black;
+  border: 2px solid #222222;
   text-align: center;
   font-size: 320%;
   color: #000000;
   font-family: irohamaru-mikami-Regular;
 }
 
-input, select, textarea {
+input {
   text-align: center;
   color: #272c4f;
   text-shadow: 1px 2px 2px #000000;
+  border-style: none;
 }
 
 .tl {
