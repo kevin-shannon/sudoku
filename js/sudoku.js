@@ -1,11 +1,6 @@
-main();
-
-function main() {
-  var grid = makeGrid();
-  fillGrid(grid);
-  console.log(grid);
-  displayGrid(grid);
-}
+var grid = makeGrid();
+fillGrid(grid);
+displayGrid(grid);
 
 function makeGrid() {
   temp = new Array(9);
@@ -58,10 +53,10 @@ function displayGrid(arrayToDisplay) {
         ident = "ne"
       }
       if(typeof arrayToDisplay[i][j] != 'undefined') {
-        table += "<td class = " + ident + ">" + arrayToDisplay[i][j] + "</td>";
+        table += "<td class = '" + ident + "'><input size='1', class = 'stone', id = 't" + i + j + "', value = '" + arrayToDisplay[i][j] + "', readonly></td>";
       }
       else {
-        table += "<td class = " + ident + "><input maxlength = 1, size='1', onkeypress='return isNumberKey(event)'></td>";
+        table += "<td class = '" + ident + "'><input maxlength = 1, size='1', id = 't" + i + j + "', onkeypress='return isNumberKey(event)'></td>";
       }
     }
     table += "</tr><tr>";
@@ -75,4 +70,79 @@ function isNumberKey(evt){
     if (charCode < 49 || charCode > 57)
         return false;
     return true;
+}
+
+function sort(arr) {
+  return arr.concat().sort();
+}
+
+function updateGrid(arrayToUpdate) {
+  for(var i = 0; i < 9; i++) {
+    for(var j = 0; j < 9; j++) {
+      tempid = "t" + i + j;
+      arrayToUpdate[i][j] = document.getElementById(tempid).value;
+    }
+  }
+  grid = arrayToUpdate;
+  return;
+}
+
+function checkGrid(arrayToCheck) {
+  if(checkRows(arrayToCheck) && checkCollumns(arrayToCheck) && checkSquares(arrayToCheck)) {
+    alert("SOLVED!");
+  }
+  else {
+    alert("LOSER!");
+  }
+}
+
+function checkRows(arrayToCheck) {
+  validity = true;
+  for(var i = 0; i < 9; i++) {
+    var temp = sort(arrayToCheck[i]);
+    for(var j = 0; j < 8; j++) {
+      if(temp[j] == temp[j+1] || temp[j] == "" || temp[8] == "") {
+        validity = false;
+      }
+    }
+  }
+  return validity;
+}
+
+function checkCollumns(arrayToCheck) {
+  validity = true;
+  for(var j = 0; j < 9; j++) {
+    var temp = new Array(9);
+    for(var i = 0; i < 9; i++) {
+      temp.push(arrayToCheck[i][j]);
+    }
+    var sorted = sort(temp);
+    for(var k = 0; k < 8; k++) {
+      if(sorted[k] == sorted[k+1] || sorted[k] == "" || sorted[8] == "") {
+        validity = false;
+      }
+    }
+  }
+  return validity;
+}
+
+function checkSquares(arrayToCheck) {
+  validity = true;
+  for(var i = 0; i < 9; i = i + 3) {
+    for(var j = 0; j < 9; j = j + 3) {
+      var temp = new Array(9);
+      for(var m = 0; m < 3; m++) {
+        for(var n = 0; n < 3; n++) {
+          temp.push(arrayToCheck[i+m][j+n])
+        }
+      }
+      var sorted = sort(temp);
+      for(var k = 0; k < 8; k++) {
+        if(sorted[k] == sorted[k+1] || sorted[k] == "" || sorted[8] == "") {
+          validity = false;
+        }
+      }
+    }
+  }
+  return validity;
 }
