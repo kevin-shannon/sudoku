@@ -13,6 +13,7 @@ input {
   color: #272c4f;
   text-shadow: 1px 2px 2px #000000;
   border-style: none;
+  outline: 0 none;
 }
 
 .stone {
@@ -99,33 +100,27 @@ button {
   padding: 8px 16px;
   font-weight: 700;
   letter-spacing: 1px;
+  background: none;
+  border: 2px solid #525252;
+  color: #0F0F0F;
 }
 
-.btn.outline {
-    background: none;
-    padding: 10px 22px;
+.btn.outline.colorShiftBlack {
+  transition: 2s;
+  color: #0F0F0F;
+  border: 2px solid #525252;
 }
 
-.btn-primary.outline {
-    border: 2px solid #525252;
-    color: #0F0F0F;
-    //starting colors
+.btn.outline.colorShiftGreen {
+  transition: .1s;
+  color: #0dd00d;
+  border: 2px solid #16bb16;
 }
 
-.btn-primary.outline:hover, .btn-primary.outline:focus,
-.btn-primary.outline:active, .btn-primary.outline.active, .open >
-.dropdown-toggle.btn-primary {
-    color: #0F0F0F;
-    border-color: #0F0F0F;
-    //hover colors
-}
-
-.btn-primary.outline:active, .btn-primary.outline.active {
-    border-color: #555555;
-    color: #0F0F0F;
-    box-shadow: 0px 0px 8px #888888;
-    background: none;
-    //click colors
+.btn.outline.colorShiftRed {
+  transition: .1s;
+  color: #FF0000;
+  border: 2px solid #EE2222;
 }
 
 .btn:focus, .btn:active:focus, .btn.active:focus {

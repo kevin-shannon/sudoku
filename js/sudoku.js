@@ -11,8 +11,8 @@ function makeGrid() {
 }
 
 function fillGrid(arrayToFill) {
-  var puzzle = [5,3,,,7,,,,,6,,,1,9,5,,,,,9,8,,,,,6,,8,,,,6,,,,3,4,,,8,,3,,,1,7,
-  ,,,2,,,,6,,6,,,,,2,8,,,,,4,1,9,,,5,,,,,8,,,7,9];
+  var puzzle = [5,3,,,7,,,,,6,,,1,9,5,,,,,9,8,,,,,6,,8,,,,6,,,,3
+  ,4,,,8,,3,,,1,7,,,,2,,,,6,,6,,,,,2,8,,,,,4,1,9,,,5,,,,,8,,,7,9];
   for(var i = 0; i < arrayToFill.length; i++) {
     for(var j = 0; j < arrayToFill[i].length; j++) {
       arrayToFill[i][j] = puzzle[9*i+j];
@@ -89,10 +89,20 @@ function updateGrid(arrayToUpdate) {
 
 function checkGrid(arrayToCheck) {
   if(checkRows(arrayToCheck) && checkCollumns(arrayToCheck) && checkSquares(arrayToCheck)) {
-    alert("SOLVED!");
+    $(".btn").addClass('colorShiftGreen');
+    setTimeout(function(){
+      $(".btn").removeClass('colorShiftGreen');
+      $(".btn").addClass('colorShiftBlack');
+    }, 1500);
+    $(".btn").removeClass('colorShiftBlack');
   }
   else {
-    alert("LOSER!");
+    $(".btn").addClass('colorShiftRed');
+    setTimeout(function(){
+      $(".btn").removeClass('colorShiftRed');
+      $(".btn").addClass('colorShiftBlack');
+    }, 1500);
+    $(".btn").removeClass('colorShiftBlack');
   }
 }
 
