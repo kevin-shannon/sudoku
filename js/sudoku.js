@@ -43,7 +43,7 @@ function displayGrid(arrayToDisplay) {
       if(typeof arrayToDisplay[i][j] != 'undefined')
         table += "<td class = '" + ident + "'><input size='1', class = 'stone', id = 't" + i + j + "', value = '" + arrayToDisplay[i][j] + "', readonly></td>";
       else
-        table += "<td class = '" + ident + "'><input autocomplete='false', maxlength = 1, size='1', id = 't" + i + j + "', onkeypress='document.getElementById(\"t" + i + j + "\").value = \"\"; return isNumberKey(event)'></td>";
+        table += "<td class = '" + ident + "'><input autocomplete='off', maxlength = 1, size='1', id = 't" + i + j + "', onkeypress='document.getElementById(\"t" + i + j + "\").value = \"\"; return isNumberKey(event)'></td>";
     }
     table += "</tr><tr>";
   }
