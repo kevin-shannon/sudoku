@@ -1,9 +1,7 @@
 var grid = make2d(9);
 displayGrid(grid);
-var bitMatrix = initBitMatrix();
-var nodeMatrix = initNodeMatrix();
-makeDonut(bitMatrix, nodeMatrix);
-bitMatrix = null;
+var bitMatrix, nodeMatrix;
+preprocess();
 
 function displayGrid(arrayToDisplay) {
   var table = "<table><tbody><tr>";
@@ -28,15 +26,20 @@ function displayGrid(arrayToDisplay) {
         ident = "rr";
       else
         ident = "ne"
-      if(typeof arrayToDisplay[i][j] != 'undefined')
-        table += "<td class = '" + ident + "'><input size='1', class = 'stone', id = 't" + i + j + "', value = '" + arrayToDisplay[i][j] + "', readonly></td>";
-      else
-        table += "<td class = '" + ident + "'><input autocomplete='new-password', maxlength = 1, size='1', id = 't" + i + j + "', onkeypress='document.getElementById(\"t" + i + j + "\").value = \"\"; return isNumberKey(event)'></td>";
+      table += "<td class = '" + ident + "'><input autocomplete='new-password', tabindex ='1', maxlength = 1, size='1', id = 't" + i + j + "', onkeypress='document.getElementById(\"t" + i + j + "\").value = \"\"; return isNumberKey(event)'></td>";
     }
     table += "</tr><tr>";
   }
   table += "</tr></tbody></table>";
   document.write(table);
+}
+
+function clearTable() {
+  for(var i = 0; i < 9; i++) {
+    for(var j = 0; j < 9; j++)
+      grid[i][j] = "";
+  }
+  updateTable(grid);
 }
 
 function isNumberKey(evt) {
@@ -64,8 +67,19 @@ function updateTable(updateArray) {
   }
 }
 
+function preprocess() {
+  bitMatrix = initBitMatrix();
+  nodeMatrix = initNodeMatrix();
+  makeDonut(bitMatrix, nodeMatrix);
+  bitMatrix = null;
+}
+
 function solve(arrayToSolve) {
   updateGrid(arrayToSolve);
   chooseGiven(arrayToSolve);
+  var t0 = performance.now();
   search();
+  var t1 = performance.now();
+  console.log("Solve Time: " + (t1 - t0) + " milliseconds.")
+  preprocess();
 }

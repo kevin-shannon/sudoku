@@ -16,11 +16,6 @@ input {
   outline: 0 none;
 }
 
-.stone {
-  color: #000000;
-  text-shadow: none;
-}
-
 .tl {
   border-top: 6px solid black;
   border-left: 6px solid black;
@@ -81,10 +76,6 @@ h1 {
 
 button {
   margin: 0;
-  position: absolute;
-  top: 85%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   margin-left: auto;
   margin-right: auto;
   font-family: irohamaru-mikami-Regular;
@@ -111,12 +102,6 @@ button {
   border: 2px solid #525252;
 }
 
-.btn.outline.colorShiftGreen {
-  transition: .1s;
-  color: #0dd00d;
-  border: 2px solid #16bb16;
-}
-
 .btn.outline.colorShiftRed {
   transition: .1s;
   color: #FF0000;
@@ -125,4 +110,18 @@ button {
 
 .btn:focus, .btn:active:focus, .btn.active:focus {
     outline: 0 none;
+}
+
+#solve {
+  left: 46%
+}
+
+#clear {
+  left: 54%
+}
+
+#solve , #clear {
+  position: absolute;
+  top: 85%;
+  transform: translate(-50%, -50%);
 }

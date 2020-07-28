@@ -181,16 +181,16 @@ function outputSolution(solution) {
   solution.sort((a, b) => a - b);
   var finalSolution = convertSolution(solution);
   updateTable(finalSolution);
+  updateGrid(finalSolution);
+  var header = new Node();
+  solution = [];
 }
 
 // Find the solution
 function search() {
-  if (found)
-    return;
   // No columns left mean we have a solution
   if (header.right == header) {
     outputSolution(solution);
-    found = true;
     return;
   }
 
