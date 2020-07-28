@@ -1,4 +1,7 @@
-@font-face { font-family: irohamaru-mikami-Regular; src: url('irohamaru-mikami-Regular.ttf'); }
+@font-face {
+  font-family: irohamaru-mikami-Regular;
+  src: url("irohamaru-mikami-Regular.ttf");
+}
 
 td {
   border: 2px solid #222222;
@@ -93,34 +96,37 @@ button {
   letter-spacing: 1px;
   background: none;
   border: 2px solid #525252;
-  color: #0F0F0F;
+  color: #0f0f0f;
 }
 
 .btn.outline.colorShiftBlack {
   transition: 2s;
-  color: #0F0F0F;
+  color: #0f0f0f;
   border: 2px solid #525252;
 }
 
 .btn.outline.colorShiftRed {
-  transition: .1s;
-  color: #FF0000;
-  border: 2px solid #EE2222;
+  transition: 0.1s;
+  color: #ff0000;
+  border: 2px solid #ee2222;
 }
 
-.btn:focus, .btn:active:focus, .btn.active:focus {
-    outline: 0 none;
+.btn:focus,
+.btn:active:focus,
+.btn.active:focus {
+  outline: 0 none;
 }
 
 #solve {
-  left: 46%
+  left: 46%;
 }
 
 #clear {
-  left: 54%
+  left: 54%;
 }
 
-#solve , #clear {
+#solve,
+#clear {
   position: absolute;
   top: 85%;
   transform: translate(-50%, -50%);

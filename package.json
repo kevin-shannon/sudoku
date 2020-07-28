@@ -1,0 +1,33 @@
+{
+  "name": "sudoku",
+  "version": "1.0.0",
+  "description": "everyone's favorite logic-based, combinatorial number-placement puzzle.",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "http-server": "^0.11.1",
+    "husky": "^2.2.0",
+    "prettier": "^1.17.0"
+  },
+  "scripts": {
+    "dev": "http-server",
+    "prettier": "prettier --write \"**/*.{html,css,js,json,prettierrc}\" && git add ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kevin-shannon/sudoku.git"
+  },
+  "author": "Kevin Shannon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kevin-shannon/sudoku/issues"
+  },
+  "homepage": "https://kevinshannon.dev/sudoku",
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run prettier"
+    }
+  }
+}
