@@ -1,5 +1,16 @@
 var grid = make2d(9);
 displayGrid(grid);
+$(window).on("load", function() {
+  $(".tl").visible();
+  $(".bl").visible();
+  $(".tr").visible();
+  $(".br").visible();
+  $(".tt").visible();
+  $(".ll").visible();
+  $(".bb").visible();
+  $(".rr").visible();
+  $(".ne").visible();
+});
 var bitMatrix, nodeMatrix;
 preprocess();
 
@@ -18,7 +29,7 @@ function displayGrid(arrayToDisplay) {
       else if (j == 8) ident = "rr";
       else ident = "ne";
       table +=
-        "<td class = '" +
+        "<td style='visibility:hidden' class = '" +
         ident +
         "'><input autocomplete='new-password', tabindex ='1', maxlength = 1, size='1', id = 't" +
         i +

@@ -3,3 +3,7 @@ function make2d(width) {
   for (var i = 0; i < width; i++) arr[i] = [];
   return arr;
 }
+
+jQuery.fn.visible = function() {
+  return this.css("visibility", "visible");
+};
