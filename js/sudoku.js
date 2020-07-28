@@ -69,11 +69,11 @@ function preprocess() {
   $.ajax({
     dataType: "json",
     url: "js/bitmatrix.json",
-    async: false,
     success: function(json) {
       bitMatrix = json;
       nodeMatrix = initNodeMatrix();
       makeDonut(bitMatrix, nodeMatrix);
+      bitMatrix = null;
     }
   });
 }
