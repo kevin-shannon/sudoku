@@ -97,7 +97,6 @@ button {
 .btn {
   margin: 0 50px;
   font-size: 17px;
-  border: 1px solid transparent;
   border-radius: 0px;
   padding: 8px 16px;
   font-weight: 700;
@@ -107,22 +106,12 @@ button {
   color: #0f0f0f;
 }
 
-.btn.outline.colorShiftBlack {
-  transition: 2s;
-  color: #0f0f0f;
-  border: 2px solid #525252;
-}
-
-.btn.outline.colorShiftRed {
-  transition: 0.1s;
-  color: #ff0000;
-  border: 2px solid #ee2222;
-}
-
 .btn:focus,
-.btn:active:focus,
-.btn.active:focus {
-  outline: 0 none;
+.btn:active {
+  outline: none !important;
+  box-shadow: none !important;
+  outline-style: dashed !important;
+  outline-width: 1.5px !important;
 }
 
 .button-row {

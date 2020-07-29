@@ -196,16 +196,29 @@ function outputSolution(solution) {
   solution = [];
 }
 
-var uniqueSolutions = 0;
+function showResult() {
+  search();
+  if (uniqueSolutions.length > 1) {
+    console.log("error nonunique puzzle");
+    $(".error-text").text("Invalid arrangment, several unique solutions");
+    $(".alert ").visible();
+  } else if (uniqueSolutions.length == 0) {
+    console.log("error no solution");
+    $(".error-text").text("Invalid arrangment, no solution exists");
+    $(".alert ").visible();
+  } else {
+    outputSolution(uniqueSolutions[0]);
+  }
+}
+
+var uniqueSolutions = [];
 
 // Find the solution
 function search() {
-  if (uniqueSolutions > 0) return;
+  if (uniqueSolutions.length > 1) return;
   // No columns left mean we have a solution
   if (header.right == header) {
-    uniqueSolutions++;
-    console.log("unique sol", solution);
-    outputSolution(solution.slice());
+    uniqueSolutions.push(solution.slice());
     return;
   }
 
