@@ -4,7 +4,7 @@ var header = new Node();
 var rows = 729;
 var cols = 324;
 var solution = [];
-var found = false;
+var uniqueSolutions = [];
 
 var getRight = i => (i + 1) % cols;
 var getLeft = i => (i - 1 < 0 ? cols - 1 : i - 1);
@@ -192,26 +192,24 @@ function outputSolution(solution) {
   var finalSolution = convertSolution(solution);
   updateTable(finalSolution);
   updateGrid(finalSolution);
-  var header = new Node();
-  solution = [];
 }
 
 function showResult() {
   search();
   if (uniqueSolutions.length > 1) {
-    console.log("error nonunique puzzle");
     $(".error-text").text("Invalid arrangment, several unique solutions");
     $(".alert ").visible();
   } else if (uniqueSolutions.length == 0) {
-    console.log("error no solution");
     $(".error-text").text("Invalid arrangment, no solution exists");
     $(".alert ").visible();
   } else {
+    $(".alert ").hidden();
     outputSolution(uniqueSolutions[0]);
   }
+  uniqueSolutions = [];
+  solution = [];
+  header = new Node();
 }
-
-var uniqueSolutions = [];
 
 // Find the solution
 function search() {
