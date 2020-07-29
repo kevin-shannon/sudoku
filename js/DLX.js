@@ -200,12 +200,12 @@ var uniqueSolutions = 0;
 
 // Find the solution
 function search() {
-  if (uniqueSolutions > 1) return;
+  if (uniqueSolutions > 0) return;
   // No columns left mean we have a solution
   if (header.right == header) {
     uniqueSolutions++;
-    console.log("unique sol");
-    outputSolution(solution);
+    console.log("unique sol", solution);
+    outputSolution(solution.slice());
     return;
   }
 

@@ -6,26 +6,41 @@
   ></script>
   <link
     rel="stylesheet"
-    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
   />
   <link rel="stylesheet" type="text/css" href="css/sudoku.css" />
+  <link
+    href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    rel="stylesheet"
+  />
   <h1>Sudoku Solver</h1>
-  <button
-    type="button"
-    class="btn btn-lg outline"
-    id="solve"
-    onclick="solve(grid);"
-  >
-    Solve
-  </button>
-  <button
-    type="button"
-    class="btn btn-lg outline"
-    id="clear"
-    onclick="clearTable();"
-  >
-    Clear
-  </button>
+  <div id="table-container"></div>
+  <div style="visibility:hidden" , class="alert alert-light">
+    <div class="error-icon">
+      <i class="material-icons">&#xe000;</i>
+    </div>
+    <div class="error-text">
+      Uh-oh! test error message.
+    </div>
+  </div>
+  <div class="button-row">
+    <button
+      type="button"
+      class="btn btn-lg outline"
+      id="solve"
+      onclick="solve(grid);"
+    >
+      Solve
+    </button>
+    <button
+      type="button"
+      class="btn btn-lg outline"
+      id="clear"
+      onclick="clearTable();"
+    >
+      Clear
+    </button>
+  </div>
   <script src="js/utils.js"></script>
   <script src="js/DLX.js"></script>
   <script src="js/sudoku.js"></script>

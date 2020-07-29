@@ -42,7 +42,7 @@ function displayGrid(arrayToDisplay) {
     table += "</tr><tr>";
   }
   table += "</tr></tbody></table>";
-  document.write(table);
+  document.getElementById("table-container").innerHTML = table;
 }
 
 function clearTable() {
@@ -93,7 +93,7 @@ function solve(arrayToSolve) {
   updateGrid(arrayToSolve);
   chooseGiven(arrayToSolve);
   var t0 = performance.now();
-  search();
+  showResult();
   var t1 = performance.now();
   console.log("Solve Time: " + (t1 - t0) + " milliseconds.");
   preprocess();

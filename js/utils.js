@@ -7,3 +7,7 @@ function make2d(width) {
 jQuery.fn.visible = function() {
   return this.css("visibility", "visible");
 };
+
+jQuery.fn.hidden = function() {
+  return this.css("visibility", "hidden");
+};

@@ -6,7 +6,7 @@
 td {
   border: 2px solid #222222;
   text-align: center;
-  font-size: 320%;
+  font-size: 250%;
   color: #000000;
   font-family: irohamaru-mikami-Regular;
 }
@@ -56,13 +56,9 @@ input {
 }
 
 table {
-  margin: 0;
-  position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0px auto;
 }
 
 td {
@@ -71,23 +67,35 @@ td {
 }
 
 h1 {
-  margin: 100px 0 0 0;
+  margin: 100px 0 175px 0;
   text-align: center;
   font-size: 50px;
   font-family: irohamaru-mikami-Regular;
 }
 
 button {
-  margin: 0;
-  margin-left: auto;
-  margin-right: auto;
   font-family: irohamaru-mikami-Regular;
 }
 
-.btn {
+.alert {
+  font-family: irohamaru-mikami-Regular;
+  text-align: center;
+  width: fit-content;
+  height: fit-content;
+  margin: 20px auto;
+}
+
+.error-icon {
   display: inline-block;
-  padding: 4px 12px;
-  margin-bottom: 0;
+  vertical-align: middle;
+}
+
+.error-text {
+  display: inline-block;
+}
+
+.btn {
+  margin: 0 50px;
   font-size: 17px;
   border: 1px solid transparent;
   border-radius: 0px;
@@ -117,17 +125,7 @@ button {
   outline: 0 none;
 }
 
-#solve {
-  left: 46%;
-}
-
-#clear {
-  left: 54%;
-}
-
-#solve,
-#clear {
-  position: absolute;
-  top: 85%;
-  transform: translate(-50%, -50%);
+.button-row {
+  width: fit-content;
+  margin: 0px auto;
 }
