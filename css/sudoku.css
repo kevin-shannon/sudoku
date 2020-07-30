@@ -60,8 +60,8 @@ input {
 }
 
 table {
-  width: min(80vw, 60vh);
-  height: min(80vw, 60vh);
+  width: min(70vw, 50vh);
+  height: min(70vw, 50vh);
   margin: 0 auto;
 }
 
