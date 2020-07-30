@@ -6,9 +6,12 @@
 td {
   border: 2px solid #222222;
   text-align: center;
-  font-size: 250%;
   color: #000000;
   font-family: irohamaru-mikami-Regular;
+  line-height: calc(100% / 9);
+  font-size: 130%;
+  width: calc(100% / 9);
+  height: calc(100% / 9);
 }
 
 input {
@@ -17,6 +20,8 @@ input {
   text-shadow: 1px 1px 1px #000000;
   border-style: none;
   outline: 0 none;
+  width: 100%;
+  height: 100%;
 }
 
 .tl {
@@ -56,20 +61,16 @@ input {
 }
 
 table {
-  top: 50%;
-  left: 50%;
-  margin: 0px auto;
-}
-
-td {
-  width: 70px;
-  height: 70px;
+  width: min(80vw, 60vh);
+  height: min(80vw, 60vh);
+  margin: 0 auto;
 }
 
 h1 {
-  margin: 100px 0 175px 0;
+  height: min(10vw, 10vh);
+  line-height: min(10vw, 10vh);
   text-align: center;
-  font-size: 50px;
+  font-size: min(5vw, 5vh);
   font-family: irohamaru-mikami-Regular;
 }
 

@@ -31,7 +31,7 @@ function displayGrid(arrayToDisplay) {
       table +=
         "<td style='visibility:hidden' class = '" +
         ident +
-        "'><input autocomplete='new-password', tabindex ='1', maxlength = 1, size='1', id = 't" +
+        "'><input autocomplete='new-password', tabindex ='1', maxlength = 1, id = 't" +
         i +
         j +
         "', onkeypress='document.getElementById(\"t" +
