@@ -10,6 +10,7 @@ $(window).on("load", function() {
   $(".bb").visible();
   $(".rr").visible();
   $(".ne").visible();
+  $("table").css("font-size", $("tr").height() / 1.8 + "px");
 });
 var bitMatrix, nodeMatrix;
 preprocess();
