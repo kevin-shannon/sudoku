@@ -66,6 +66,7 @@ table {
 }
 
 h1 {
+  margin: 2rem 0 5rem 0;
   height: min(10vw, 10vh);
   line-height: min(10vw, 10vh);
   text-align: center;
