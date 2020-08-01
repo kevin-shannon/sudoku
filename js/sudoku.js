@@ -14,6 +14,17 @@ $(window).on("load", function() {
   $("table").css("width", $("table").css("width"));
   $("table").css("height", $("table").css("height"));
 });
+
+$(document).ready(function() {
+  $("input[type=number]").on("focus", function() {
+    $(this).on("keydown", function(event) {
+      if (event.keyCode === 38 || event.keyCode === 40) {
+        event.preventDefault();
+      }
+    });
+  });
+});
+
 var bitMatrix, nodeMatrix;
 preprocess();
 
@@ -34,7 +45,7 @@ function displayGrid(arrayToDisplay) {
       table +=
         "<td style='visibility:hidden' class = '" +
         ident +
-        "'><input autocomplete='new-password', tabindex ='1', pattern='\d', type='number', maxlength = 1, id = 't" +
+        "'><input autocomplete='new-password', tabindex ='1', pattern='d', type='number', maxlength = 1, id = 't" +
         i +
         j +
         "', onkeypress='document.getElementById(\"t" +
