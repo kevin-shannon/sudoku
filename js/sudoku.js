@@ -11,6 +11,8 @@ $(window).on("load", function() {
   $(".rr").visible();
   $(".ne").visible();
   $("table").css("font-size", $("tr").height() / 1.8 + "px");
+  $("table").css("width", $("table").css("width"));
+  $("table").css("height", $("table").css("height"));
 });
 var bitMatrix, nodeMatrix;
 preprocess();
