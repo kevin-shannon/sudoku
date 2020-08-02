@@ -73,7 +73,7 @@ function Box({ focus, onKeyDown, onChange, value, setFocusedBox }) {
         onChange={onChange}
         value={value}
         onClick={setFocusedBox}
-        style={{ fontSize: height / 1.8 }}
+        style={{ fontSize: height / 1.6 }}
       />
     </td>
   );
@@ -109,7 +109,7 @@ const handleKeys = (e, currentBoxX, currentBoxY, setFocusedBox) => {
   } else if (e.which === 40) {
     // Down Arrow
     move(1, 0);
-  } else if (e.which === 9 && !e.shiftKey) {
+  } else if ((e.which === 9 && !e.shiftKey) || e.which === 13) {
     // Tab (go right)
     if (currentBoxY === 8) {
       move(1, -8);
