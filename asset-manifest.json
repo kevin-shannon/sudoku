@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/static/css/main.600ff82f.chunk.css",
+    "main.js": "/static/js/main.9d5a46db.chunk.js",
+    "main.js.map": "/static/js/main.9d5a46db.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.4dd858cb.js",
+    "runtime-main.js.map": "/static/js/runtime-main.4dd858cb.js.map",
+    "static/js/2.9001f09c.chunk.js": "/static/js/2.9001f09c.chunk.js",
+    "static/js/2.9001f09c.chunk.js.map": "/static/js/2.9001f09c.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.1fd9cf9a56f8246c6c591620146fda51.js": "/precache-manifest.1fd9cf9a56f8246c6c591620146fda51.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.600ff82f.chunk.css.map": "/static/css/main.600ff82f.chunk.css.map",
+    "static/js/2.9001f09c.chunk.js.LICENSE.txt": "/static/js/2.9001f09c.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/static/media/irohamaru-mikami-Regular.946f1626.ttf"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4dd858cb.js",
+    "static/js/2.9001f09c.chunk.js",
+    "static/css/main.600ff82f.chunk.css",
+    "static/js/main.9d5a46db.chunk.js"
+  ]
+}
