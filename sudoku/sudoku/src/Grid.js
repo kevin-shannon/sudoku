@@ -24,7 +24,7 @@ function displayGrid({ focusRow, focusColumn }, setFocusedBox) {
         <Box
           key={i + "" + j}
           focus={focus}
-          onKeyDown={e => handleArrowKey(e, i, j, setFocusedBox)}
+          onKeyDown={e => handleKeys(e, i, j, setFocusedBox)}
         />
       );
     }
@@ -58,14 +58,6 @@ function Box({ focus, onKeyDown }) {
         autoComplete="new-password"
         pattern="\d"
         type="number"
-        onInput={e => {
-          if (e.target.value.length > 1) {
-            // example: if they enter 3 then 5, the value
-            // will be "35". slice takes just the 5 and
-            // sets that as the new value
-            e.target.value = e.target.value.slice(1, 2);
-          }
-        }}
         onKeyDown={onKeyDown}
       />
     </td>
@@ -81,7 +73,7 @@ const useFocus = () => {
   return [htmlElRef, setFocus];
 };
 
-const handleArrowKey = (e, currentBoxX, currentBoxY, setFocusedBox) => {
+const handleKeys = (e, currentBoxX, currentBoxY, setFocusedBox) => {
   const move = (x, y) => {
     e.preventDefault();
     setFocusedBox({
@@ -89,6 +81,8 @@ const handleArrowKey = (e, currentBoxX, currentBoxY, setFocusedBox) => {
       focusColumn: currentBoxY + y
     });
   };
+  // Clear input
+  e.target.value = "";
 
   if (e.which === 39) {
     // Right Arrow
@@ -102,16 +96,23 @@ const handleArrowKey = (e, currentBoxX, currentBoxY, setFocusedBox) => {
   } else if (e.which === 40) {
     // Down Arrow
     move(1, 0);
-  } else if (e.which === 13 || e.which === 32) {
-    // Enter or Spacebar - edit cell
   } else if (e.which === 9 && !e.shiftKey) {
     // Tab (go right)
-    // TODO: go to next row if in last box in row
-    move(0, 1);
+    if (currentBoxY === 8) {
+      move(1, -8);
+    } else {
+      move(0, 1);
+    }
   } else if (e.which === 9 && e.shiftKey) {
     // Shift + Tab (go left)
-    // TODO: ditto above
-    move(0, -1);
+    if (currentBoxY === 0) {
+      move(-1, 8);
+    } else {
+      move(0, -1);
+    }
+  } else if (e.which === 96) {
+    // Block "0"
+    e.preventDefault();
   }
 };
 
