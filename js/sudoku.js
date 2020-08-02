@@ -1,4 +1,4 @@
-var grid = make2d(9);
+var grid = make2D(9);
 displayGrid(grid);
 $(window).on("load", function() {
   $(".tl").visible();

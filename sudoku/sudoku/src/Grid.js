@@ -1,11 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 
-function Grid({ grid2D, setGrid2D }) {
+function Grid({ grid2D, setGrid2D, focusedBox, setFocusedBox }) {
   // useState explained: https://reactjs.org/docs/hooks-state.html
-  const [focusedBox, setFocusedBox] = useState({
-    focusRow: -1,
-    focusColumn: -1,
-  });
 
   return (
     <table cellSpacing="0">
@@ -31,6 +27,13 @@ function displayGrid(
           focus={focus}
           onKeyDown={(e) => handleKeys(e, i, j, setFocusedBox)}
           onChange={(e) => updateGrid(e, i, j, grid2D, setGrid2D)}
+          value={grid2D[i][j]}
+          setFocusedBox={() =>
+            setFocusedBox({
+              focusRow: i,
+              focusColumn: j,
+            })
+          }
         />
       );
     }
@@ -41,12 +44,13 @@ function displayGrid(
 
 function updateGrid(e, currentBoxX, currentBoxY, grid2D, setGrid2D) {
   grid2D[currentBoxX][currentBoxY] = e.target.value;
-  console.log("FUCK", grid2D);
-  setGrid2D(grid2D);
+  setGrid2D(grid2D.slice());
 }
 
-function Box({ focus, onKeyDown, onChange }) {
+function Box({ focus, onKeyDown, onChange, value, setFocusedBox }) {
   const [inputRef, setInputFocus] = useFocus();
+  const [height, setHeight] = useState(0);
+  const tdRef = useRef(null);
 
   useEffect(() => {
     if (focus) {
@@ -54,8 +58,12 @@ function Box({ focus, onKeyDown, onChange }) {
     }
   }, [focus, setInputFocus]);
 
+  useEffect(() => {
+    setHeight(tdRef.current.clientHeight);
+  });
+
   return (
-    <td>
+    <td ref={tdRef}>
       <input
         ref={inputRef}
         autoComplete="new-password"
@@ -63,6 +71,9 @@ function Box({ focus, onKeyDown, onChange }) {
         type="number"
         onKeyDown={onKeyDown}
         onChange={onChange}
+        value={value}
+        onClick={setFocusedBox}
+        style={{ fontSize: height / 1.8 }}
       />
     </td>
   );
@@ -121,16 +132,5 @@ const handleKeys = (e, currentBoxX, currentBoxY, setFocusedBox) => {
     e.target.value = "";
   }
 };
-
-function make2d(width) {
-  var arr = [];
-  for (let i = 0; i < 9; i++) {
-    arr.push([]);
-    for (let j = 0; j < 9; j++) {
-      arr[i].push("");
-    }
-  }
-  return arr;
-}
 
 export default Grid;

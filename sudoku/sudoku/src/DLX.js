@@ -1,59 +1,38 @@
-/*
+import bitMatrix from "./bitmatrix.json";
+import { make2DEmpty } from "./utils.js";
+
 class Node {}
 
+var nodeMatrix;
 var header = new Node();
 var rows = 729;
 var cols = 324;
 var solution = [];
 var uniqueSolutions = [];
 
-var getRight = i => (i + 1) % cols;
-var getLeft = i => (i - 1 < 0 ? cols - 1 : i - 1);
-var getUp = i => (i - 1 < 0 ? rows : i - 1);
-var getDown = i => (i + 1) % (rows + 1);
-
-
+var getRight = (i) => (i + 1) % cols;
+var getLeft = (i) => (i - 1 < 0 ? cols - 1 : i - 1);
+var getUp = (i) => (i - 1 < 0 ? rows : i - 1);
+var getDown = (i) => (i + 1) % (rows + 1);
 
 function preprocess() {
-  $.ajax({
-    dataType: "json",
-    url: "js/bitmatrix.json",
-    success: function(json) {
-      bitMatrix = json;
-      nodeMatrix = initNodeMatrix();
-      makeDonut(bitMatrix, nodeMatrix);
-      bitMatrix = null;
-    }
-  });
+  nodeMatrix = initNodeMatrix();
+  makeDonut(bitMatrix, nodeMatrix);
 }
-*/
 
+preprocess();
 export function solve(arrayToSolve) {
-  //updateGrid(arrayToSolve);
-  //chooseGiven(arrayToSolve);
-  var t0 = performance.now();
-  //showResult();
-  var t1 = performance.now();
+  chooseGiven(arrayToSolve);
+  const t0 = performance.now();
+  const result = showResult();
+  const t1 = performance.now();
   console.log("Solve Time: " + (t1 - t0) + " milliseconds.");
-  //preprocess();
-  return {
-    sucess: true,
-    grid: [
-      ["1", "", "", "", "", "", "", "", ""],
-      ["", "2", "", "", "", "", "", "", ""],
-      ["", "", "3", "", "", "", "", "", ""],
-      ["", "", "", "4", "", "", "", "", ""],
-      ["", "", "", "", "5", "", "", "", ""],
-      ["", "", "", "", "", "6", "", "", ""],
-      ["", "", "", "", "", "", "7", "", ""],
-      ["", "", "", "", "", "", "", "8", ""],
-      ["", "", "", "", "", "", "", "", "9"],
-    ],
-  };
+  preprocess();
+  return result;
 }
-/*
+
 function initNodeMatrix() {
-  var nodeMatrix = make2d(rows + 1);
+  var nodeMatrix = make2DEmpty(rows + 1);
   for (var i = 0; i <= rows; i++) {
     for (var j = 0; j < cols; j++) {
       nodeMatrix[i][j] = new Node();
@@ -219,7 +198,7 @@ function chooseGiven(grid) {
 
 // Convert rowNodes to a grid
 function convertSolution(solution) {
-  var grid = make2d(9);
+  var grid = make2DEmpty(9);
   for (var i = 0; i < 9; i++) {
     for (var j = 0; j < 9; j++) {
       grid[i][j] = solution[9 * i + j] - 81 * i - 9 * j;
@@ -230,26 +209,26 @@ function convertSolution(solution) {
 
 function outputSolution(solution) {
   solution.sort((a, b) => a - b);
-  var finalSolution = convertSolution(solution);
-  updateTable(finalSolution);
-  updateGrid(finalSolution);
+  return convertSolution(solution);
 }
 
 function showResult() {
   search();
+  let success = false,
+    grid,
+    error;
   if (uniqueSolutions.length > 1) {
-    $(".error-text").text("Invalid arrangment, several unique solutions");
-    $(".alert ").visible();
+    error = "Invalid arrangment, several unique solutions";
   } else if (uniqueSolutions.length == 0) {
-    $(".error-text").text("Invalid arrangment, no solution exists");
-    $(".alert ").visible();
+    error = "Invalid arrangment, no solution exists";
   } else {
-    $(".alert ").hidden();
-    outputSolution(uniqueSolutions[0]);
+    grid = outputSolution(uniqueSolutions[0]);
+    success = true;
   }
   uniqueSolutions = [];
   solution = [];
   header = new Node();
+  return { success, grid, error };
 }
 
 // Find the solution
@@ -292,4 +271,3 @@ function search() {
   }
   uncover(column);
 }
-*/

@@ -12,7 +12,7 @@ var getUp = i => (i - 1 < 0 ? rows : i - 1);
 var getDown = i => (i + 1) % (rows + 1);
 
 function initNodeMatrix() {
-  var nodeMatrix = make2d(rows + 1);
+  var nodeMatrix = make2D(rows + 1);
   for (var i = 0; i <= rows; i++) {
     for (var j = 0; j < cols; j++) {
       nodeMatrix[i][j] = new Node();
@@ -178,7 +178,7 @@ function chooseGiven(grid) {
 
 // Convert rowNodes to a grid
 function convertSolution(solution) {
-  var grid = make2d(9);
+  var grid = make2D(9);
   for (var i = 0; i < 9; i++) {
     for (var j = 0; j < 9; j++) {
       grid[i][j] = solution[9 * i + j] - 81 * i - 9 * j;
