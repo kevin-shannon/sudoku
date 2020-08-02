@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 
 function Grid() {
   return (
@@ -24,9 +24,13 @@ function displayGrid(focusRow, focusColumn) {
 
 function Box({ focus }) {
   const [inputRef, setInputFocus] = useFocus();
-  if (focus) {
-    setInputFocus();
-  }
+
+  useEffect(() => {
+    if (focus) {
+      setInputFocus();
+    }
+  }, [focus]);
+
   return (
     <td>
       <input
