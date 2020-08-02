@@ -81,10 +81,6 @@ const handleKeys = (e, currentBoxX, currentBoxY, setFocusedBox) => {
       focusColumn: currentBoxY + y
     });
   };
-  // Clear input
-  if (e.which < 37 || e.which > 40) {
-    e.target.value = "";
-  }
 
   if (e.which === 39) {
     // Right Arrow
@@ -115,6 +111,8 @@ const handleKeys = (e, currentBoxX, currentBoxY, setFocusedBox) => {
   } else if (e.which === 96) {
     // Block "0"
     e.preventDefault();
+  } else {
+    e.target.value = "";
   }
 };
 
