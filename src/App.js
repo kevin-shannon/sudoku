@@ -33,6 +33,10 @@ function App() {
             const { success, grid, error } = solve(grid2D);
             if (success) setGrid2D(grid);
             else setErrorMessage(error);
+            setFocusedBox({
+              focusRow: -1,
+              focusColumn: -1,
+            });
           }}
         >
           Solve
