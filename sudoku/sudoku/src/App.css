@@ -8,7 +8,7 @@
 }
 
 td {
-  border: 2px solid #222222;
+  border: 1px solid #222222;
   text-align: center;
   color: #000000;
   line-height: calc(100% / 9);
@@ -26,46 +26,28 @@ input {
   height: 100%;
 }
 
-.tl {
-  border-top: 6px solid black;
-  border-left: 6px solid black;
+tr:nth-child(3n + 1) td {
+  border-top: 3px solid black;
 }
 
-.bl {
-  border-bottom: 6px solid black;
-  border-left: 6px solid black;
+tr:nth-child(3n + 3) td {
+  border-bottom: 3px solid black;
 }
 
-.tr {
-  border-top: 6px solid black;
-  border-right: 6px solid black;
+td:nth-child(3n + 1) {
+  border-left: 3px solid black;
 }
 
-.br {
-  border-bottom: 6px solid black;
-  border-right: 6px solid black;
-}
-
-.tt {
-  border-top: 6px solid black;
-}
-
-.ll {
-  border-left: 6px solid black;
-}
-
-.bb {
-  border-bottom: 6px solid black;
-}
-
-.rr {
-  border-right: 6px solid black;
+td:nth-child(3n + 3) {
+  border-right: 3px solid black;
 }
 
 table {
   width: min(70vw, 50vh);
   height: min(70vw, 50vh);
   margin: 0 auto;
+  border-spacing: 0;
+  border-collapse: collapse;
 }
 
 h1 {
@@ -126,4 +108,5 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type="number"] {
   -moz-appearance: textfield;
+  padding: 0;
 }

@@ -8,7 +8,7 @@ function Grid() {
   });
 
   return (
-    <table>
+    <table cellSpacing="0">
       <tbody>{displayGrid(focusedBox, setFocusedBox)}</tbody>
     </table>
   );
@@ -49,14 +49,13 @@ function Box({ focus, onKeyDown }) {
     if (focus) {
       setInputFocus();
     }
-  }, [focus]);
+  }, [focus, setInputFocus]);
 
   return (
     <td>
       <input
         ref={inputRef}
         autoComplete="new-password"
-        tabIndex="1"
         pattern="\d"
         type="number"
         onInput={e => {
@@ -91,25 +90,25 @@ const handleArrowKey = (e, currentBoxX, currentBoxY, setFocusedBox) => {
     });
   };
 
-  if (e.which == 39) {
+  if (e.which === 39) {
     // Right Arrow
     move(0, 1);
-  } else if (e.which == 37) {
+  } else if (e.which === 37) {
     // Left Arrow
     move(0, -1);
-  } else if (e.which == 38) {
+  } else if (e.which === 38) {
     // Up Arrow
     move(-1, 0);
-  } else if (e.which == 40) {
+  } else if (e.which === 40) {
     // Down Arrow
     move(1, 0);
-  } else if (e.which == 13 || e.which == 32) {
+  } else if (e.which === 13 || e.which === 32) {
     // Enter or Spacebar - edit cell
-  } else if (e.which == 9 && !e.shiftKey) {
+  } else if (e.which === 9 && !e.shiftKey) {
     // Tab (go right)
     // TODO: go to next row if in last box in row
     move(0, 1);
-  } else if (e.which == 9 && e.shiftKey) {
+  } else if (e.which === 9 && e.shiftKey) {
     // Shift + Tab (go left)
     // TODO: ditto above
     move(0, -1);
