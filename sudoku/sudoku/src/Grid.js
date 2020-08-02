@@ -82,7 +82,9 @@ const handleKeys = (e, currentBoxX, currentBoxY, setFocusedBox) => {
     });
   };
   // Clear input
-  e.target.value = "";
+  if (e.which < 37 || e.which > 40) {
+    e.target.value = "";
+  }
 
   if (e.which === 39) {
     // Right Arrow
