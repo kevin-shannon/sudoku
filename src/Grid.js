@@ -60,7 +60,7 @@ function Box({ focus, onKeyDown, onChange, value, setFocusedBox }) {
 
   useEffect(() => {
     setHeight(tdRef.current.clientHeight);
-  });
+  }, [setHeight]);
 
   return (
     <td ref={tdRef}>

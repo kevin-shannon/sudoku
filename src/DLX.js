@@ -64,28 +64,28 @@ function makeDonut(bitMatrix, nodeMatrix) {
         b = j;
         do {
           b = getLeft(b);
-        } while (!bitMatrix[a][b] && i && b != j);
+        } while (!bitMatrix[a][b] && i && b !== j);
         nodeMatrix[i][j].left = nodeMatrix[i][b];
 
         a = i;
         b = j;
         do {
           b = getRight(b);
-        } while (!bitMatrix[a][b] && i && b != j);
+        } while (!bitMatrix[a][b] && i && b !== j);
         nodeMatrix[i][j].right = nodeMatrix[i][b];
 
         a = i;
         b = j;
         do {
           a = getUp(a);
-        } while (!bitMatrix[a][b] && a && a != i);
+        } while (!bitMatrix[a][b] && a && a !== i);
         nodeMatrix[i][j].up = nodeMatrix[a][j];
 
         a = i;
         b = j;
         do {
           a = getDown(a);
-        } while (!bitMatrix[a][b] && a && a != i);
+        } while (!bitMatrix[a][b] && a && a !== i);
         nodeMatrix[i][j].down = nodeMatrix[a][j];
       } else {
         nodeMatrix[i][j] = null;
@@ -110,12 +110,12 @@ function cover(target) {
   // Move down and remove nodes traversing to the right
   for (
     var rowNode = colNode.down;
-    rowNode.rowID != colNode.rowID;
+    rowNode.rowID !== colNode.rowID;
     rowNode = rowNode.down
   ) {
     for (
       var rightNode = rowNode.right;
-      rightNode.colID != rowNode.colID;
+      rightNode.colID !== rowNode.colID;
       rightNode = rightNode.right
     ) {
       rightNode.up.down = rightNode.down;
@@ -131,12 +131,12 @@ function uncover(target) {
   // Move down and remove nodes traversing to the right
   for (
     var rowNode = colNode.up;
-    rowNode.rowID != colNode.rowID;
+    rowNode.rowID !== colNode.rowID;
     rowNode = rowNode.up
   ) {
     for (
       var leftNode = rowNode.left;
-      leftNode.colID != rowNode.colID;
+      leftNode.colID !== rowNode.colID;
       leftNode = leftNode.left
     ) {
       leftNode.up.down = leftNode;
@@ -157,7 +157,7 @@ function getMinColumn() {
   do {
     if (h.nodeCnt < minCol.nodeCnt) minCol = h;
     h = h.right;
-  } while (h != header);
+  } while (h !== header);
   return minCol;
 }
 
@@ -166,7 +166,7 @@ function getNodeFromRow(row) {
   for (var i = 0; i < cols; i++) {
     if (
       nodeMatrix[row][i] &&
-      nodeMatrix[row][i].column.left.right == nodeMatrix[row][i].column
+      nodeMatrix[row][i].column.left.right === nodeMatrix[row][i].column
     )
       return nodeMatrix[row][i];
   }
@@ -178,7 +178,7 @@ function choose(row) {
   cover(rowNode);
   for (
     var rightNode = rowNode.right;
-    rightNode.colID != rowNode.colID;
+    rightNode.colID !== rowNode.colID;
     rightNode = rightNode.right
   )
     cover(rightNode);
@@ -219,7 +219,7 @@ function showResult() {
     error;
   if (uniqueSolutions.length > 1) {
     error = "Invalid arrangment, several unique solutions";
-  } else if (uniqueSolutions.length == 0) {
+  } else if (uniqueSolutions.length === 0) {
     error = "Invalid arrangment, no solution exists";
   } else {
     grid = outputSolution(uniqueSolutions[0]);
@@ -235,7 +235,7 @@ function showResult() {
 function search() {
   if (uniqueSolutions.length > 1) return;
   // No columns left mean we have a solution
-  if (header.right == header) {
+  if (header.right === header) {
     uniqueSolutions.push(solution.slice());
     return;
   }
@@ -248,13 +248,13 @@ function search() {
 
   for (
     var rowNode = column.down;
-    rowNode.rowID != column.rowID;
+    rowNode.rowID !== column.rowID;
     rowNode = rowNode.down
   ) {
     solution.push(rowNode.rowID);
     for (
       var rightNode = rowNode.right;
-      rightNode.colID != rowNode.colID;
+      rightNode.colID !== rowNode.colID;
       rightNode = rightNode.right
     )
       cover(rightNode);
@@ -264,7 +264,7 @@ function search() {
     column = rowNode.column;
     for (
       var leftNode = rowNode.left;
-      leftNode != rowNode;
+      leftNode !== rowNode;
       leftNode = leftNode.left
     )
       uncover(leftNode);
