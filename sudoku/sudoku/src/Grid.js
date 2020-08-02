@@ -4,7 +4,7 @@ function Grid({ grid2D, setGrid2D }) {
   // useState explained: https://reactjs.org/docs/hooks-state.html
   const [focusedBox, setFocusedBox] = useState({
     focusRow: -1,
-    focusColumn: -1
+    focusColumn: -1,
   });
 
   return (
@@ -29,8 +29,8 @@ function displayGrid(
         <Box
           key={i + "" + j}
           focus={focus}
-          onKeyDown={e => handleKeys(e, i, j, setFocusedBox)}
-          onChange={e => updateGrid(e, i, j, grid2D, setGrid2D)}
+          onKeyDown={(e) => handleKeys(e, i, j, setFocusedBox)}
+          onChange={(e) => updateGrid(e, i, j, grid2D, setGrid2D)}
         />
       );
     }
@@ -82,7 +82,7 @@ const handleKeys = (e, currentBoxX, currentBoxY, setFocusedBox) => {
     e.preventDefault();
     setFocusedBox({
       focusRow: currentBoxX + x,
-      focusColumn: currentBoxY + y
+      focusColumn: currentBoxY + y,
     });
   };
 
