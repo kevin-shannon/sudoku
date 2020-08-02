@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 
-function Grid() {
+function Grid({ grid2D, setGrid2D }) {
   // useState explained: https://reactjs.org/docs/hooks-state.html
   const [focusedBox, setFocusedBox] = useState({
     focusRow: -1,
@@ -9,12 +9,17 @@ function Grid() {
 
   return (
     <table cellSpacing="0">
-      <tbody>{displayGrid(focusedBox, setFocusedBox)}</tbody>
+      <tbody>{displayGrid(focusedBox, setFocusedBox, grid2D, setGrid2D)}</tbody>
     </table>
   );
 }
 
-function displayGrid({ focusRow, focusColumn }, setFocusedBox) {
+function displayGrid(
+  { focusRow, focusColumn },
+  setFocusedBox,
+  grid2D,
+  setGrid2D
+) {
   let rows = [];
   for (let i = 0; i < 9; i++) {
     let row = [];
@@ -25,6 +30,7 @@ function displayGrid({ focusRow, focusColumn }, setFocusedBox) {
           key={i + "" + j}
           focus={focus}
           onKeyDown={e => handleKeys(e, i, j, setFocusedBox)}
+          onChange={e => updateGrid(e, i, j, grid2D, setGrid2D)}
         />
       );
     }
@@ -33,18 +39,15 @@ function displayGrid({ focusRow, focusColumn }, setFocusedBox) {
   return rows;
 }
 
-function Box({ focus, onKeyDown }) {
-  // useFocus is an example of a "custom" react hook.
-  // The two most common built-in hooks are probably
-  // useState and useEffect.
+function updateGrid(e, currentBoxX, currentBoxY, grid2D, setGrid2D) {
+  grid2D[currentBoxX][currentBoxY] = e.target.value;
+  console.log("FUCK", grid2D);
+  setGrid2D(grid2D);
+}
+
+function Box({ focus, onKeyDown, onChange }) {
   const [inputRef, setInputFocus] = useFocus();
 
-  // This function will run whenever focus changes,
-  // but only after the component is first rendered.
-  // Essentially, the reason the input was not focusing
-  // because it wasn't rendered yet, and thus didn't
-  // exist and couldn't be focused.
-  // more info on useEffect: https://reactjs.org/docs/hooks-effect.html
   useEffect(() => {
     if (focus) {
       setInputFocus();
@@ -59,6 +62,7 @@ function Box({ focus, onKeyDown }) {
         pattern="\d"
         type="number"
         onKeyDown={onKeyDown}
+        onChange={onChange}
       />
     </td>
   );
@@ -111,9 +115,22 @@ const handleKeys = (e, currentBoxX, currentBoxY, setFocusedBox) => {
   } else if (e.which === 96) {
     // Block "0"
     e.preventDefault();
-  } else {
+  } else if (e.which !== 8) {
+    // Clear input otherwise if not backspace
+    // as to guarantee change.
     e.target.value = "";
   }
 };
+
+function make2d(width) {
+  var arr = [];
+  for (let i = 0; i < 9; i++) {
+    arr.push([]);
+    for (let j = 0; j < 9; j++) {
+      arr[i].push("");
+    }
+  }
+  return arr;
+}
 
 export default Grid;
