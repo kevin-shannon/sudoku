@@ -36,5 +36,6 @@
     "hooks": {
       "pre-commit": "npm run prettier"
     }
-  }
+  },
+  "homepage": "https://kevinshannon.dev/sudoku/"
 }
