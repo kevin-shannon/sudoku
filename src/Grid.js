@@ -122,7 +122,17 @@ const handleKeys = (e, currentBoxX, currentBoxY, setFocusedBox) => {
     } else {
       move(0, -1);
     }
-  } else if (e.which === 96) {
+  } else if (
+    e.which === 96 ||
+    e.which === 48 ||
+    e.which === 69 ||
+    e.which === 107 ||
+    e.which === 109 ||
+    e.which === 110 ||
+    e.which === 187 ||
+    e.which === 189 ||
+    e.which === 190
+  ) {
     // Block "0"
     e.preventDefault();
   } else if (e.which !== 8) {
