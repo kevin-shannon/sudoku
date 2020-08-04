@@ -110,6 +110,11 @@ hr {
   display: inline-block;
 }
 
+.button-row {
+  width: calc(100% - 10vw);
+  margin: 0 auto;
+}
+
 .btn:focus,
 .btn:active {
   outline: none;
