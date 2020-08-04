@@ -1,7 +1,7 @@
 import React from "react";
 import { Error, HelpOutline } from "@material-ui/icons";
 
-function Alert({ alertMessage, alertType }) {
+function Alert({ alertMessage, setAlertMessage, alertType, setAlertType }) {
   return (
     <div className="alert alert-light">
       {alertMessage && alertType === HelpOutline && (

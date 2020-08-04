@@ -218,9 +218,9 @@ function showResult() {
     grid,
     error;
   if (uniqueSolutions.length > 1) {
-    error = "Invalid arrangment, several unique solutions";
+    error = "Invalid puzzle. Several unique solutions.";
   } else if (uniqueSolutions.length === 0) {
-    error = "Invalid arrangment, no solution exists";
+    error = "Invalid puzzle. No solution exists.";
   } else {
     grid = outputSolution(uniqueSolutions[0]);
     success = true;

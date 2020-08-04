@@ -3,12 +3,15 @@ import "./App.css";
 import Grid from "./Grid.js";
 import { solve } from "./DLX.js";
 import { Error, HelpOutline } from "@material-ui/icons";
-import Alert from "./ErrorAlert.js";
+import Alert from "./Alert.js";
 import { make2DFull } from "./utils.js";
 
 function App() {
   const [grid2D, setGrid2D] = useState(make2DFull(""));
-  const [message, setMessage] = useState("");
+  const [alertMessage, setAlertMessage] = useState(
+    "Tip: Use the arrow keys to quickly navigate between boxes!"
+  );
+  const [alertType, setAlertType] = useState(HelpOutline);
   const [focusedBox, setFocusedBox] = useState({
     focusRow: -1,
     focusColumn: -1,
@@ -24,7 +27,12 @@ function App() {
           setFocusedBox={setFocusedBox}
         />
       </div>
-      <Alert alertMessage={"Tip: Use the arrow"} alertType={HelpOutline} />
+      <Alert
+        alertMessage={alertMessage}
+        setAlertMessage={setAlertMessage}
+        alertType={alertType}
+        setAlertType={setAlertType}
+      />
       <div className="button-row">
         <div className="button-cell">
           <button
@@ -33,8 +41,12 @@ function App() {
             id="solve"
             onClick={() => {
               const { success, grid, error } = solve(grid2D);
-              if (success) setGrid2D(grid);
-              else setMessage(error);
+              if (success) {
+                setGrid2D(grid);
+              } else {
+                setAlertMessage(error);
+                setAlertType(Error);
+              }
               setFocusedBox({
                 focusRow: -1,
                 focusColumn: -1,
@@ -52,7 +64,8 @@ function App() {
             onClick={() => {
               let arr = make2DFull("");
               setGrid2D(arr);
-              setMessage("");
+              setAlertMessage("");
+              setAlertType(Error);
               setFocusedBox({
                 focusRow: -1,
                 focusColumn: -1,

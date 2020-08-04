@@ -2,7 +2,6 @@ import React, { useRef, useEffect, useState } from "react";
 
 function Grid({ grid2D, setGrid2D, focusedBox, setFocusedBox }) {
   // useState explained: https://reactjs.org/docs/hooks-state.html
-
   return (
     <table cellSpacing="0">
       <tbody>{displayGrid(focusedBox, setFocusedBox, grid2D, setGrid2D)}</tbody>
