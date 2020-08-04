@@ -124,6 +124,7 @@ const handleKeys = (e, currentBoxX, currentBoxY, setFocusedBox) => {
     }
   } else if (
     e.which === 96 ||
+    e.which === 46 ||
     e.which === 48 ||
     e.which === 69 ||
     e.which === 107 ||
