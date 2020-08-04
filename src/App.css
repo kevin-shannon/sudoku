@@ -45,51 +45,56 @@ td:nth-child(3n + 3) {
 }
 
 table {
-  width: min(70vw, 50vh);
   height: min(70vw, 50vh);
-  margin: 0 auto;
   border-spacing: 0;
   border-collapse: collapse;
 }
 
+table,
+#table-container,
+.App,
+.alert {
+  width: min(70vw, 50vh);
+  margin: auto;
+}
+
 h1 {
-  margin: 2rem 0 6rem 0;
+  width: min(70vw, 50vh);
+  margin: 4vh auto 8vh auto;
   height: min(10vw, 10vh);
   line-height: min(10vw, 10vh);
   text-align: center;
-  font-size: min(5vw, 5vh);
+  font-size: min(8vw, 5vh);
   font-weight: 500;
 }
 
 .alert {
-  font-size: 1rem;
+  font-size: 16px;
   text-align: center;
-  width: fit-content;
-  height: fit-content;
-  margin: 20px auto;
+  margin: 2rem auto;
   position: relative;
-  padding: 0.75rem 1.25rem;
   border-radius: 0.25rem;
-  min-height: 3em;
+  min-height: 4rem;
+}
+
+hr {
+  margin-top: 3em;
 }
 
 .alert-light {
   color: #818182;
 }
 
-.error-icon {
-  display: inline-block;
-  vertical-align: middle;
-}
-
 .error-text {
   display: inline-block;
+  max-width: 90%;
 }
 
 .btn {
-  margin: 0 50px;
-  font-size: 17px;
-  border-radius: 0px;
+  margin: 0 auto;
+  font-size: 16px;
+  border-radius: 0;
+  display: block;
   padding: 8px 16px;
   font-weight: 700;
   letter-spacing: 2px;
@@ -97,6 +102,12 @@ h1 {
   border: 2px solid #525252;
   color: #0f0f0f;
   cursor: pointer;
+}
+
+.button-cell {
+  width: 50%;
+  margin: 0;
+  display: inline-block;
 }
 
 .btn:focus,
@@ -111,11 +122,6 @@ h1 {
   box-shadow: 0px 1.5px 2.5px 1.5px rgba(0, 0, 0, 0.2);
 }
 
-.button-row {
-  width: fit-content;
-  margin: 0px auto;
-}
-
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -125,4 +131,13 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type="number"] {
   -moz-appearance: textfield;
+}
+
+footer {
+  text-align: center;
+}
+
+a:visited {
+  text-decoration: none;
+  color: #272c4f;
 }

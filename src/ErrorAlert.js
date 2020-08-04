@@ -1,17 +1,22 @@
 import React from "react";
-import { Error } from "@material-ui/icons";
+import { Error, HelpOutline } from "@material-ui/icons";
 
-function ErrorAlert({ children }) {
+function Alert({ alertMessage, alertType }) {
   return (
     <div className="alert alert-light">
-      {children && (
-        <Error
-          style={{ fontSize: "1.5em", position: "relative", top: ".25em" }}
+      {alertMessage && alertType === HelpOutline && (
+        <HelpOutline
+          style={{ fontSize: "1.5em", verticalAlign: "top", minWidth: "5%" }}
         />
       )}
-      <div className="error-text">{children}</div>
+      {alertMessage && alertType === Error && (
+        <Error
+          style={{ fontSize: "1.5em", verticalAlign: "top", minWidth: "5%" }}
+        />
+      )}
+      <div className="error-text">{alertMessage}</div>
     </div>
   );
 }
 
-export default ErrorAlert;
+export default Alert;
