@@ -6,12 +6,14 @@ import { Error, HelpOutline, Info } from "@material-ui/icons";
 import Alert from "./Alert.js";
 import { make2DFull } from "./utils.js";
 import Modal from "react-modal";
+import { isMobile } from "react-device-detect";
 
 function App() {
+  const tip = isMobile
+    ? "Tip: Press enter/return to quickly move on to the next box!"
+    : "Tip: Use the arrow keys to quickly navigate between boxes!";
   const [grid2D, setGrid2D] = useState(make2DFull(""));
-  const [alertMessage, setAlertMessage] = useState(
-    "Tip: Use the arrow keys to quickly navigate between boxes!"
-  );
+  const [alertMessage, setAlertMessage] = useState(tip);
   const [AlertType, setAlertType] = useState(HelpOutline);
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const [focusedBox, setFocusedBox] = useState({
