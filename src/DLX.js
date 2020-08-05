@@ -22,6 +22,13 @@ function preprocess() {
 
 preprocess();
 export function solve(arrayToSolve) {
+  if (!checkClean(arrayToSolve)) {
+    return {
+      success: false,
+      grid: arrayToSolve,
+      error: "Invalid puzzle. Unrecognized characters in table.",
+    };
+  }
   chooseGiven(arrayToSolve);
   const t0 = performance.now();
   const result = showResult();
@@ -29,6 +36,21 @@ export function solve(arrayToSolve) {
   console.log("Solve Time: " + (t1 - t0) + " milliseconds.");
   preprocess();
   return result;
+}
+
+function checkClean(arrayToCheck) {
+  const validChars = "123456789";
+  for (var i = 0; i < 9; i++) {
+    for (var j = 0; j < 9; j++) {
+      if (
+        !validChars.includes(arrayToCheck[i][j]) ||
+        arrayToCheck[i][j].length > 1
+      ) {
+        return false;
+      }
+    }
+  }
+  return true;
 }
 
 function initNodeMatrix() {
