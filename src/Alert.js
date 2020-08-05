@@ -1,6 +1,6 @@
 import React from "react";
 
-function Alert({ alertMessage, setAlertMessage, AlertType, setAlertType }) {
+function Alert({ alertMessage, AlertType }) {
   return (
     <div className="alert alert-light">
       {alertMessage && (
