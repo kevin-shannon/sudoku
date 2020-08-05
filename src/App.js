@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import "./App.css";
 import Grid from "./Grid.js";
 import { solve } from "./DLX.js";
-import { Error, HelpOutline } from "@material-ui/icons";
+import { Error, HelpOutline, Info } from "@material-ui/icons";
 import Alert from "./Alert.js";
 import { make2DFull } from "./utils.js";
+import Modal from "react-modal";
 
 function App() {
   const [grid2D, setGrid2D] = useState(make2DFull(""));
@@ -12,10 +13,12 @@ function App() {
     "Tip: Use the arrow keys to quickly navigate between boxes!"
   );
   const [AlertType, setAlertType] = useState(HelpOutline);
+  const [modalIsOpen, setIsOpen] = React.useState(false);
   const [focusedBox, setFocusedBox] = useState({
     focusRow: -1,
     focusColumn: -1,
   });
+
   return (
     <div className="App">
       <h1>Sudoku Solver</h1>
@@ -73,10 +76,29 @@ function App() {
       </div>
       <hr />
       <footer>
-        Sudoku Solver by&nbsp;
-        <a href="https://kevinshannon.dev/">Kevin Shannon</a> <br />
-        <a href="https://github.com/kevin-shannon/sudoku">View on Github</a>
+        <div className="alert-text">
+          Sudoku Solver by&nbsp;
+          <a href="https://kevinshannon.dev/">Kevin Shannon</a> <br />
+          <a href="https://github.com/kevin-shannon/sudoku">View on Github</a>
+        </div>
+        <Info className="info-icon" onClick={() => setIsOpen(true)} />
       </footer>
+      <Modal
+        className="info-modal"
+        isOpen={modalIsOpen}
+        onRequestClose={() => setIsOpen(false)}
+        contentLabel="Info Modal"
+      >
+        <h3 style={{ textAlign: "center" }}>About Sudoku Solver</h3>
+        <p>
+          Welcome to Sudoku Solver 🤖 A website that, as the name implies, will
+          solve any Sudoku in just milliseconds! This is achieved by using
+          Knuth's Algorithm X to solve a Sudoku as an exact cover problem. To
+          input your puzzle you can either click around, or use the arrow, tab,
+          and enter keys. When you're done use "solve" or if you want to start
+          over use "clear".
+        </p>
+      </Modal>
     </div>
   );
 }

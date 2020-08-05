@@ -142,6 +142,26 @@ footer {
   text-align: center;
 }
 
+.info-icon {
+  display: inline-block;
+  float: right;
+}
+
+.info-modal {
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  width: min(60vw, 40vh);
+  background: white;
+  padding: 2vh;
+  max-height: 30vh;
+  overflow-y: auto;
+}
+
 a:visited {
   text-decoration: none;
   color: #272c4f;
