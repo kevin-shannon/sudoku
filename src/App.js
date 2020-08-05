@@ -92,11 +92,15 @@ function App() {
         <h3 style={{ textAlign: "center" }}>About Sudoku Solver</h3>
         <p>
           Welcome to Sudoku Solver 🤖 A website that, as the name implies, will
-          solve any Sudoku in just milliseconds! This is achieved by using
-          Knuth's Algorithm X to solve a Sudoku as an exact cover problem. To
-          input your puzzle you can either click around, or use the arrow, tab,
-          and enter keys. When you're done use "solve" or if you want to start
-          over use "clear".
+          solve any Sudoku in just milliseconds! This is achieved by using{" "}
+          <a href="https://en.wikipedia.org/wiki/Knuth%27s_Algorithm_X">
+            Knuth's Algorithm X
+          </a>{" "}
+          to solve a Sudoku as an{" "}
+          <a href="https://en.wikipedia.org/wiki/Exact_cover">exact cover</a>{" "}
+          problem. To input your puzzle you can either click around, or use the
+          arrow, tab, and enter keys. When you're done use "solve" or if you
+          want to start over use "clear".
         </p>
       </Modal>
     </div>
