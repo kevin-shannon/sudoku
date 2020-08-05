@@ -27,12 +27,7 @@ function App() {
           setFocusedBox={setFocusedBox}
         />
       </div>
-      <Alert
-        alertMessage={alertMessage}
-        setAlertMessage={setAlertMessage}
-        AlertType={AlertType}
-        setAlertType={setAlertType}
-      />
+      <Alert alertMessage={alertMessage} AlertType={AlertType} />
       <div className="button-row">
         <div className="button-cell">
           <button
