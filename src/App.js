@@ -20,7 +20,7 @@ function App() {
   });
 
   return (
-    <div className="App">
+    <div className="App" id="root">
       <h1>Sudoku Solver</h1>
       <div id="table-container">
         <Grid
@@ -91,8 +91,12 @@ function App() {
       >
         <h3 style={{ textAlign: "center" }}>About Sudoku Solver</h3>
         <p>
-          Welcome to Sudoku Solver 🤖 A website that, as the name implies, will
-          solve any Sudoku in just milliseconds! This is achieved by using{" "}
+          Welcome to Sudoku Solver{" "}
+          <span role="img" aria-label="robot">
+            🤖
+          </span>{" "}
+          A website that, as the name implies, will solve any Sudoku in just
+          milliseconds! This is achieved by using{" "}
           <a href="https://en.wikipedia.org/wiki/Knuth%27s_Algorithm_X">
             Knuth's Algorithm X
           </a>{" "}
@@ -106,5 +110,7 @@ function App() {
     </div>
   );
 }
+
+Modal.setAppElement("#root");
 
 export default App;
