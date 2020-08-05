@@ -162,7 +162,7 @@ footer {
   overflow-y: auto;
 }
 
-a:visited {
+a {
   text-decoration: none;
   color: #272c4f;
 }
