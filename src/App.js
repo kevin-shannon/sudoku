@@ -11,7 +11,7 @@ function App() {
   const [alertMessage, setAlertMessage] = useState(
     "Tip: Use the arrow keys to quickly navigate between boxes!"
   );
-  const [alertType, setAlertType] = useState(HelpOutline);
+  const [AlertType, setAlertType] = useState(HelpOutline);
   const [focusedBox, setFocusedBox] = useState({
     focusRow: -1,
     focusColumn: -1,
@@ -30,7 +30,7 @@ function App() {
       <Alert
         alertMessage={alertMessage}
         setAlertMessage={setAlertMessage}
-        alertType={alertType}
+        AlertType={AlertType}
         setAlertType={setAlertType}
       />
       <div className="button-row">
