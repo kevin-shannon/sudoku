@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import "./App.css";
 import Grid from "./Grid.js";
-import { solve } from "./DLX.js";
+import { solve } from "../solve/DLX.js";
 import { Error, HelpOutline, Info } from "@material-ui/icons";
 import Alert from "./Alert.js";
-import { make2DFull } from "./utils.js";
+import { make2DFull } from "../solve/utils.js";
 import Modal from "react-modal";
 import { isMobile } from "react-device-detect";
 
