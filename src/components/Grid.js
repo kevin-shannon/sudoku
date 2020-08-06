@@ -1,9 +1,9 @@
-import React, { useRef, useEffect, useState } from "react";
+import React from "react";
+import Box from "./Box.js";
 
 function Grid({ grid2D, setGrid2D, focusedBox, setFocusedBox }) {
-  // useState explained: https://reactjs.org/docs/hooks-state.html
   return (
-    <table cellSpacing="0">
+    <table>
       <tbody>{displayGrid(focusedBox, setFocusedBox, grid2D, setGrid2D)}</tbody>
     </table>
   );
@@ -45,47 +45,6 @@ function updateGrid(e, currentBoxX, currentBoxY, grid2D, setGrid2D) {
   grid2D[currentBoxX][currentBoxY] = e.target.value;
   setGrid2D(grid2D.slice());
 }
-
-function Box({ focus, onKeyDown, onChange, value, setFocusedBox }) {
-  const [inputRef, setInputFocus] = useFocus();
-  const [height, setHeight] = useState(0);
-  const tdRef = useRef(null);
-
-  useEffect(() => {
-    if (focus) {
-      setInputFocus();
-    }
-  }, [focus, setInputFocus]);
-
-  useEffect(() => {
-    setHeight(tdRef.current.clientHeight);
-  }, [setHeight]);
-
-  return (
-    <td ref={tdRef}>
-      <input
-        ref={inputRef}
-        autoComplete="new-password"
-        pattern="\d"
-        type="number"
-        onKeyDown={onKeyDown}
-        onChange={onChange}
-        value={value}
-        onClick={setFocusedBox}
-        style={{ fontSize: height / 1.6 }}
-      />
-    </td>
-  );
-}
-
-// taken from https://stackoverflow.com/a/54159564
-const useFocus = () => {
-  const htmlElRef = useRef(null);
-  const setFocus = () => {
-    htmlElRef.current && htmlElRef.current.focus();
-  };
-  return [htmlElRef, setFocus];
-};
 
 const handleKeys = (e, currentBoxX, currentBoxY, setFocusedBox) => {
   const move = (x, y) => {
