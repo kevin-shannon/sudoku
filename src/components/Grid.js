@@ -1,10 +1,27 @@
 import React from "react";
 import Box from "./Box.js";
+import { checkConflicts } from "../solve/utils.js";
 
-function Grid({ grid2D, setGrid2D, focusedBox, setFocusedBox }) {
+function Grid({
+  grid2D,
+  setGrid2D,
+  focusedBox,
+  setFocusedBox,
+  conflicts,
+  setConflicts,
+}) {
   return (
     <table>
-      <tbody>{displayGrid(focusedBox, setFocusedBox, grid2D, setGrid2D)}</tbody>
+      <tbody>
+        {displayGrid(
+          focusedBox,
+          setFocusedBox,
+          grid2D,
+          setGrid2D,
+          conflicts,
+          setConflicts
+        )}
+      </tbody>
     </table>
   );
 }
@@ -13,7 +30,9 @@ function displayGrid(
   { focusRow, focusColumn },
   setFocusedBox,
   grid2D,
-  setGrid2D
+  setGrid2D,
+  conflicts,
+  setConflicts
 ) {
   let rows = [];
   for (let i = 0; i < 9; i++) {
@@ -25,8 +44,11 @@ function displayGrid(
           key={i + "" + j}
           focus={focus}
           onKeyDown={(e) => handleKeys(e, i, j, setFocusedBox)}
-          onChange={(e) => updateGrid(e, i, j, grid2D, setGrid2D)}
+          onChange={(e) =>
+            updateGrid(e, i, j, grid2D, setGrid2D, conflicts, setConflicts)
+          }
           value={grid2D[i][j]}
+          conflict={JSON.stringify(conflicts).includes(JSON.stringify([i, j]))}
           setFocusedBox={() =>
             setFocusedBox({
               focusRow: i,
@@ -41,9 +63,18 @@ function displayGrid(
   return rows;
 }
 
-function updateGrid(e, currentBoxX, currentBoxY, grid2D, setGrid2D) {
+function updateGrid(
+  e,
+  currentBoxX,
+  currentBoxY,
+  grid2D,
+  setGrid2D,
+  conflicts,
+  setConflicts
+) {
   grid2D[currentBoxX][currentBoxY] = e.target.value;
   setGrid2D(grid2D.slice());
+  setConflicts(checkConflicts(grid2D));
 }
 
 const handleKeys = (e, currentBoxX, currentBoxY, setFocusedBox) => {

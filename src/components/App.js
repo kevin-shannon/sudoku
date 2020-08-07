@@ -15,6 +15,7 @@ function App() {
   const [grid2D, setGrid2D] = useState(make2DFull(""));
   const [alertMessage, setAlertMessage] = useState(tip);
   const [AlertType, setAlertType] = useState(HelpOutline);
+  const [conflicts, setConflicts] = useState([]);
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const [focusedBox, setFocusedBox] = useState({
     focusRow: -1,
@@ -30,6 +31,8 @@ function App() {
           setGrid2D={setGrid2D}
           focusedBox={focusedBox}
           setFocusedBox={setFocusedBox}
+          conflicts={conflicts}
+          setConflicts={setConflicts}
         />
       </div>
       <Alert alertMessage={alertMessage} AlertType={AlertType} />

@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 
-function Box({ focus, onKeyDown, onChange, value, setFocusedBox }) {
+function Box({ focus, onKeyDown, onChange, value, conflict, setFocusedBox }) {
   const [inputRef, setInputFocus] = useFocus();
   const [height, setHeight] = useState(0);
   const tdRef = useRef(null);
@@ -19,6 +19,7 @@ function Box({ focus, onKeyDown, onChange, value, setFocusedBox }) {
     <td ref={tdRef}>
       <input
         ref={inputRef}
+        className={conflict ? "problem-child" : "behaved-child"}
         autoComplete="new-password"
         pattern="\d"
         type="number"

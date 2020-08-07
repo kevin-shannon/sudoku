@@ -251,7 +251,7 @@ function getSolutionGrid(solution) {
   let grid = make2DEmpty(9);
   for (let i = 0; i < 9; i++) {
     for (let j = 0; j < 9; j++) {
-      grid[i][j] = solution[9 * i + j] - 81 * i - 9 * j;
+      grid[i][j] = (solution[9 * i + j] - 81 * i - 9 * j).toString();
     }
   }
   return grid;

@@ -19,12 +19,12 @@ td {
 input {
   text-align: center;
   color: #272c4f;
-  text-shadow: 1px 1px 1px #000000;
   border-style: none;
   outline: 0 none;
   width: 100%;
   height: 100%;
   padding: 0;
+  font-weight: 1000;
 }
 
 tr:nth-child(3n + 1) td {
@@ -163,4 +163,8 @@ footer {
 
 a {
   color: #272c4f;
+}
+
+.problem-child {
+  color: #e90723;
 }
